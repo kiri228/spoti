@@ -1,0 +1,78 @@
+[debug] [2023-11-28T13:25:20.181Z] ----------------------------------------------------------------------
+[debug] [2023-11-28T13:25:20.184Z] Command:       /home/daniel/.nvm/versions/node/v20.9.0/bin/node /home/daniel/.nvm/versions/node/v20.9.0/bin/firebase init hosting
+[debug] [2023-11-28T13:25:20.185Z] CLI Version:   12.9.1
+[debug] [2023-11-28T13:25:20.185Z] Platform:      linux
+[debug] [2023-11-28T13:25:20.186Z] Node Version:  v20.9.0
+[debug] [2023-11-28T13:25:20.186Z] Time:          Tue Nov 28 2023 19:25:20 GMT+0600 (Киргизия)
+[debug] [2023-11-28T13:25:20.186Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-11-28T13:25:20.193Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-11-28T13:25:20.194Z] > authorizing via signed-in user (zanbolotov.daniel2004@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/daniel/Рабочий стол/hachathon_react
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
+[debug] [2023-11-28T13:25:44.921Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2023-11-28T13:25:44.922Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"27462746abc","name":"hachathon"}
+[debug] [2023-11-28T13:25:46.167Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 400
+[debug] [2023-11-28T13:25:46.167Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"error":{"code":400,"message":"field [project_id] has issue [project_id contains invalid characters]","status":"INVALID_ARGUMENT","details":[{"@type":"type.googleapis.com/google.rpc.BadRequest","fieldViolations":[{"field":"project_id","description":"project_id contains invalid characters"}]},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"url":"https://cloud.google.com/resource-manager/reference/rest/v1/projects"}]}]}}
+[debug] [2023-11-28T13:25:46.431Z] FirebaseError: HTTP Error: 400, field [project_id] has issue [project_id contains invalid characters]
+    at responseToError (/home/daniel/.nvm/versions/node/v20.9.0/lib/node_modules/firebase-tools/lib/responseToError.js:49:12)
+    at RetryOperation._fn (/home/daniel/.nvm/versions/node/v20.9.0/lib/node_modules/firebase-tools/lib/apiv2.js:285:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: Failed to create project. See firebase-debug.log for more info.
+[debug] [2023-11-28T13:26:12.403Z] ----------------------------------------------------------------------
+[debug] [2023-11-28T13:26:12.406Z] Command:       /home/daniel/.nvm/versions/node/v20.9.0/bin/node /home/daniel/.nvm/versions/node/v20.9.0/bin/firebase init hosting
+[debug] [2023-11-28T13:26:12.407Z] CLI Version:   12.9.1
+[debug] [2023-11-28T13:26:12.407Z] Platform:      linux
+[debug] [2023-11-28T13:26:12.407Z] Node Version:  v20.9.0
+[debug] [2023-11-28T13:26:12.407Z] Time:          Tue Nov 28 2023 19:26:12 GMT+0600 (Киргизия)
+[debug] [2023-11-28T13:26:12.408Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-11-28T13:26:12.421Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-11-28T13:26:12.422Z] > authorizing via signed-in user (zanbolotov.daniel2004@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/daniel/Рабочий стол/hachathon_react
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
+[debug] [2023-11-28T13:29:20.547Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2023-11-28T13:29:20.547Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"27462746abc","name":"hachathon"}
+[debug] [2023-11-28T13:29:21.705Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 400
+[debug] [2023-11-28T13:29:21.706Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"error":{"code":400,"message":"field [project_id] has issue [project_id contains invalid characters]","status":"INVALID_ARGUMENT","details":[{"@type":"type.googleapis.com/google.rpc.BadRequest","fieldViolations":[{"field":"project_id","description":"project_id contains invalid characters"}]},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"url":"https://cloud.google.com/resource-manager/reference/rest/v1/projects"}]}]}}
+[debug] [2023-11-28T13:29:22.102Z] FirebaseError: HTTP Error: 400, field [project_id] has issue [project_id contains invalid characters]
+    at responseToError (/home/daniel/.nvm/versions/node/v20.9.0/lib/node_modules/firebase-tools/lib/responseToError.js:49:12)
+    at RetryOperation._fn (/home/daniel/.nvm/versions/node/v20.9.0/lib/node_modules/firebase-tools/lib/apiv2.js:285:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: Failed to create project. See firebase-debug.log for more info.
