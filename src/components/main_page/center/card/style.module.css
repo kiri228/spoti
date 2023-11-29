@@ -1,0 +1,15 @@
+.main {
+  width: 100%;
+}
+
+.card {
+  position: relative;
+  width: 80%;
+  background-color: aqua;
+  height: 3rem;
+}
+
+.logo {
+  border-radius: 50% !important;
+  height: 2%;
+}
