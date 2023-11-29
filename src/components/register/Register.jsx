@@ -1,13 +1,11 @@
-import React from "react";
-import styles from "./style.module.css";
-import { NavLink } from "react-router-dom";
+import React from 'react'
+
 const Register = () => {
   return (
     <div>
-      <h1>HEllo from register page</h1>
-      <NavLink to="/">Click</NavLink>
+      <h1></h1>
     </div>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register

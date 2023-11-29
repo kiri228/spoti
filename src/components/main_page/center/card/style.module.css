@@ -1,5 +1,10 @@
 .main {
   width: 100%;
+  height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f2f2f2;
 }
 
 .card {
@@ -7,9 +12,16 @@
   width: 80%;
   background-color: aqua;
   height: 3rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
+
 
 .logo {
   border-radius: 50% !important;
   height: 2%;
+  
 }

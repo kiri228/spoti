@@ -3,27 +3,32 @@
   overflow: hidden;
   border-bottom: 1px solid black;
 }
-.logo {
-  padding: 10px;
-  margin-top: 4% !important;
-  overflow: hidden;
-  object-fit: cover;
-  border: 0.2rem solid #e1306c;
-}
 .ul {
   display: flex;
   list-style: none;
   gap: 3%;
 }
 .ul img {
-  width: 90%;
-  border-radius: 100%;
-  margin-left: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+margin-left: 0.5rem;
+  height: 140px;
+    width: 140px;
+    border-radius: 50%;
+    padding: 3px;
 }
 .li {
-  width: 10%;
+  width:140px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
   align-items: center;
   border-radius: 100%;
-  border: 2px solid #e1306c;
-  overflow: hidden;
+  padding: 10px;
+    margin-top: 4% !important;
+    overflow: hidden;
+    object-fit: cover;
+    border: 0.2rem solid #e1306c;
 }
