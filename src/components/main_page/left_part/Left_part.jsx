@@ -7,7 +7,7 @@ import notifications_logo from "./images/notification_logo.png";
 import create_logo from "./images/create_logo.png";
 import more_logo from "./images/more_logo.png";
 import default_logo from "./images/default_picture.jpeg";
-
+import { CgAddR } from "react-icons/cg";
 const Left_part = () => {
   return (
     <div className={styles.main}>
@@ -26,7 +26,7 @@ const Left_part = () => {
           <span>Notifications</span>
         </li>
         <li className={styles.li}>
-          <img src={create_logo} alt="create_logo" style={{ width: "10%" }} />
+          <CgAddR />
           <span>Create</span>
         </li>
         <li className={styles.li}>
