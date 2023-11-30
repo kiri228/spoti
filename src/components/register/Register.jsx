@@ -33,7 +33,7 @@ const Register = () => {
         <button type="submit">Save</button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register
