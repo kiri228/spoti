@@ -2,8 +2,24 @@ import React from "react";
 import styles from "./style.module.css";
 import "../login/Login";
 import { NavLink } from "react-router-dom";
-
+import { useAuth } from "../../contexts/auth/AuthContextProvider";
+import { Navigate } from "react-router-dom";
 const Register = () => {
+  const { register, user } = useAuth();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const data = new FormData(e.currentTarget);
+    register(
+      data.get("email"),
+      data.get("password"),
+      data.get("displayName"),
+      data.get("name_and_surname")
+    );
+  };
+  if (user) {
+    return <Navigate to="/" />;
+  }
   return (
     <div className={styles.registerForm}>
       <h1 className={styles.instagramTitle}>Register</h1>
@@ -54,8 +70,9 @@ const Register = () => {
           </NavLink>
         </div>
       </div>
+     
     </div>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register
