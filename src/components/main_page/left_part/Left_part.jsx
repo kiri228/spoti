@@ -1,12 +1,17 @@
 import React from "react";
 import styles from "./style.module.css";
 import logo from "./images/logo.jpeg";
-import home_logo from "./images/home_logo.png";
-import search_logo from "./images/search_logo.png";
-import notifications_logo from "./images/notification_logo.png";
-import create_logo from "./images/create_logo.png";
-import more_logo from "./images/more_logo.png";
-import default_logo from "./images/default_picture.jpeg";
+import { GoHomeFill } from "react-icons/go";
+import { IoSearchOutline } from "react-icons/io5";
+import { ImCompass2 } from "react-icons/im";
+import { MdVideoCameraFront } from "react-icons/md";
+import { FaFacebookMessenger } from "react-icons/fa";
+import { MdFavoriteBorder } from "react-icons/md";
+import { FaPlus } from "react-icons/fa";
+import { VscAccount } from "react-icons/vsc";
+import { CgDetailsMore } from "react-icons/cg";
+import { FaThreads } from "react-icons/fa6";
+
 
 const Left_part = () => {
   return (
@@ -14,29 +19,45 @@ const Left_part = () => {
       <img src={logo} alt="logo" className={styles.logo} />
       <ul className={styles.ul}>
         <li className={styles.li}>
-          <img src={home_logo} alt="" />
-          <span>Home</span>
+          <GoHomeFill />
+          <span>Главная</span>
         </li>
         <li className={styles.li}>
-          <img src={search_logo} alt="search_logo" />
-          <span>Seacrh</span>
+          <IoSearchOutline />
+          <span>Поиск</span>
         </li>
         <li className={styles.li}>
-          <img src={notifications_logo} alt="notifications_logo" />
-          <span>Notifications</span>
+          <ImCompass2 />
+       <span>Интересное</span>
         </li>
         <li className={styles.li}>
-          <img src={create_logo} alt="create_logo" style={{ width: "10%" }} />
-          <span>Create</span>
+          <MdVideoCameraFront />
+          <span>Reels</span>
+        </li>
+      <li className={styles.li}>
+          <FaFacebookMessenger />
+       <span>Собщения</span>
         </li>
         <li className={styles.li}>
-          <img src={default_logo} alt="profie_logo" />
-          <span>Profile</span>
+          <MdFavoriteBorder />
+          <span>Уведомления</span>
         </li>
         <li className={styles.li}>
-          <img src={more_logo} alt="more_logo" />
-          <span>More</span>
+          <FaPlus />
+          <span>Создать</span>
         </li>
+        <li className={styles.li}>
+          <VscAccount />
+          <span>Профиль</span>
+        </li>
+        <li className={styles.li_threades}  >
+          <FaThreads />
+          <span>Threades</span>
+        </li>
+        <li className={styles.li_threades}>
+          <CgDetailsMore />
+        <span>Ещё</span>
+      </li>
       </ul>
     </div>
   );

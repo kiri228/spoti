@@ -1,27 +1,91 @@
 .main {
   width: 100%;
-  height: 100vh;
+  height: 200vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #f2f2f2;
+    margin: 20px 0px; 
 }
-
-.card {
-  position: relative;
-  width: 80%;
-  background-color: aqua;
-  height: 3rem;
-  border-radius: 10px;
+.card{
+  width: 616px;
+  height: 842px;
+  border: 1px solid #dbdbdbdb;  
+}
+.userlogo{
+  width: 32px;
+  height: 32px;
+  border: 2px solid red;
+  border-radius: 50%;
+  background: black;
+  margin-right: 20px;
+}
+.header{
+  width: 100%;
+  height: 60px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  border-bottom: 2px solid #dbdbdbdb;
+  padding: 15px 20px;
+  box-sizing: border-box;
 }
-
-
-.logo {
-  border-radius: 50% !important;
-  height: 2%;
-  
+.userName{
+font-weight: 700;
+}
+.burger{
+  font-size: 20px;
+  font-weight: 900;
+  cursor: pointer;
+  opacity: 0.7;
+}
+.userDate{
+  margin-right: auto;
+}
+.content{
+  width: 100%;
+  height: 614px;
+  background-color: brown;
+}
+.communication{
+width: 100%;
+height:40px;
+display: flex;
+}
+.like{
+  font-size: 35px;
+  font-weight: 900;
+  color: #dbdbdb;
+  cursor: pointer;
+ padding: 5px;  
+}
+.like:hover{
+  opacity: 0.9;
+  color: red;
+}
+.coment{
+  font-size: 30px;
+  font-weight: 700;
+  color: black;
+  cursor: pointer;
+  padding: 5px; 
+}
+.coment:hover{
+  opacity: 0.6;
+  color: gray;
+}
+.sending{
+  font-size: 35px;
+  font-weight: 900;
+  cursor: pointer;
+  padding: 5px;
+}
+.sending:hover{
+opacity: 0.6;
+}
+.save{
+  font-size: 30px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 5px;
+  margin-left: 73%;
+}
+.save:hover{
+  opacity: 0.4;
+  color:grey;
 }
