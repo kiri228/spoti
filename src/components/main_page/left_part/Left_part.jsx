@@ -12,7 +12,6 @@ import { VscAccount } from "react-icons/vsc";
 import { CgDetailsMore } from "react-icons/cg";
 import { FaThreads } from "react-icons/fa6";
 
-
 const Left_part = () => {
   return (
     <div className={styles.main}>
