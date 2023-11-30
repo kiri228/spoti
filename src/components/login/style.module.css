@@ -1,0 +1,212 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.loginContainer {
+  max-width: 300px;
+  margin: 20px auto; 
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+
+.instagramHeader {
+  margin-bottom: 20px;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputContainer {
+  position: relative;
+  width: 100%; 
+  margin-bottom: 10px;
+}
+
+.input {
+  width: 93%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc; 
+  border-radius: 3px;
+  background: transparent;
+  transition: border-color 0.3s; 
+  font-size: 0.8rem; 
+}
+
+.inputFocused {
+  border-color: #555; 
+}
+
+.inputFocused + .label {
+  top: 0.3rem;
+  font-size: 0.6rem;
+  color: #555;
+}
+
+.passwordContainer {
+  position: relative;
+  width: 100%; 
+  margin-bottom: 10px;
+}
+
+.showPassword {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #555;
+  font-size: 0.8rem;
+}
+
+.button {
+  width: 100%; 
+  padding: 10px;
+  background-color: #3897f0;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.8rem; 
+}
+
+.button:hover {
+  background-color: #2874a6;
+}
+
+.label {
+  height: 10%;
+  position: absolute;
+  top: 15%;
+  margin-right: 5%;
+  left: 10px;
+  transform: translateY(-70%);
+  pointer-events: none;
+  transition: top 0.3s, font-size 0.3s, color 0.3s;
+  font-size: 0.8rem; 
+  color: #aaa;
+}
+
+
+.orDivider {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.orText {
+  margin: 0 10px;
+  color: #555;
+  font-size: 0.8rem;
+}
+
+.orDivider .dividerLine:first-child {
+  margin-right: 10px;
+}
+
+.orDivider .dividerLine:last-child {
+  margin-left: 10px;
+}
+
+
+
+.facebookLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px; 
+}
+
+.style_facebookText__a0G0i {
+    font-size: 70%;
+    margin-right: 59%;
+}
+.facebookLink {
+  font-size: 0.9rem;
+  text-decoration: none; 
+  color: #385898;
+}
+
+.facebookLink:hover {
+  text-decoration: underline;
+}
+
+
+
+.registrationContainer {
+  max-width: 300px;
+  margin: 24px auto;
+  padding: -2px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.registrationLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.registerLink {
+  margin-top: 5px;
+  color: #1877f2;
+  cursor: pointer;
+  margin-left: 5px;
+  font-size: 0.9rem; 
+}
+
+.registerLink:hover {
+  text-decoration: underline;
+}
+
+
+
+
+.pageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.loginContainer {
+  width: 25%; 
+  padding: 20px;
+  margin-left: 36%;
+  margin-top: 8%;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.passwordForgot{
+  display: flex;
+  flex-direction: column;
+}
+
+.passwordForgot a:hover{
+  text-decoration: underline;
+}
+
+
+.loginForm {
+  margin-top: 20px; 
+}

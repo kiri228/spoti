@@ -1,0 +1,141 @@
+/* style.module.css */
+
+.registerForm {
+  width: 270px;
+  margin: auto;
+  padding: 20px;
+  margin-left: 38%;
+  margin-top: 4%;
+  border: 1px solid #ccc;
+}
+
+.instagramTitle {
+    margin-left: 25%;
+    margin-bottom: 5%;
+  font-size: 24px;
+  color: rgb(48, 47, 47); 
+}
+
+.registrationText {
+  color: rgb(36, 35, 35); 
+  margin-bottom: 5%;
+  margin-left: 13%;
+}
+
+.facebookButton {
+  background-color: #1877f2;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%; 
+}
+
+.inputContainer {
+  margin-top: 20px;
+}
+
+.inputContainer input {
+  width: 91%; 
+  padding: 10px;
+  margin-bottom: 10px;
+
+}
+
+.additionalText {
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+.additionalText span {
+  color: #214069;
+  cursor: pointer;
+}
+
+.registerButton {
+  background-color:#4788df;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%; 
+}
+
+
+
+
+.facebookButton,
+.registerButton {
+  transition: background-color 0.3s, transform 0.3s; 
+}
+
+.facebookButton:active,
+.registerButton:active {
+  background-color: #0d0f0f; 
+  transform: scale(0.95); 
+}
+
+
+
+
+.orDivider {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.orText {
+  margin: 0 10px;
+  color: #555;
+  font-size: 0.8rem;
+}
+
+.orDivider .dividerLine:first-child {
+  margin-right: 10px;
+}
+
+.orDivider .dividerLine:last-child {
+  margin-left: 10px;
+}
+
+.OpenContainer {
+  color: black;
+}
+
+
+
+.OpenContainer {
+  max-width: 300px;
+  margin: 24px auto;
+  padding: -2px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.OpenLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.OpenLink {
+  margin-top: 5px;
+  color: #090a0b;
+  cursor: pointer;
+  margin-left: 5px;
+  font-size: 0.9rem; 
+}
