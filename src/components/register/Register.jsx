@@ -28,8 +28,7 @@ const Register = () => {
       </p> */}
       <button
         className={styles.facebookButton}
-        onClick={() => (window.location.href = "https://www.facebook.com/")}
-      >
+        onClick={() => (window.location.href = "https://www.facebook.com/")}>
         Войти через Facebook
       </button>
 
@@ -39,11 +38,15 @@ const Register = () => {
         <span className={styles.dividerLine}></span>
       </div>
 
-      <form className={styles.inputContainer}>
-        <input type="email" placeholder="Электронный адрес" />
-        <input type="text" placeholder="Имя и фамилия" />
-        <input type="text" placeholder="Имя пользователя" />
-        <input type="password" placeholder="Пароль" />
+      <form className={styles.inputContainer} onSubmit={handleSubmit}>
+        <input type="email" placeholder="Электронный адрес" name="email" />
+        <input
+          type="text"
+          placeholder="Имя и фамилия"
+          name="name_and_surname"
+        />
+        <input type="text" placeholder="Имя пользователя" name="displayName" />
+        <input type="password" placeholder="Пароль" name="password" />
         <button className={styles.registerButton}>Регистрация</button>
       </form>
       <p className={styles.additionalText}>
@@ -52,8 +55,7 @@ const Register = () => {
         <span
           onClick={() =>
             (window.location.href = "https://www.facebook.com/privacy/policy")
-          }
-        >
+          }>
           (Регистрируясь, вы принимаете наши Условия, Политику
           конфиденциальности и Политику в отношении файлов cookie.)
         </span>
@@ -70,9 +72,8 @@ const Register = () => {
           </NavLink>
         </div>
       </div>
-     
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;
