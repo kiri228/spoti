@@ -21,11 +21,12 @@ export function useAuth() {
 
 const AuthContextsProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-
+  const [loading, setLoading] = useState(null);
   async function register(email, password, displayName, name_and_surname) {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(auth.currentUser, { displayName, name_and_surname });
+      localStorage.setItem("is", "yes");
     } catch (error) {
       notify(error.code.split("/")[1], "error");
     }
@@ -34,6 +35,7 @@ const AuthContextsProvider = ({ children }) => {
   async function login(email, password) {
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      localStorage.setItem("is", "yes");
     } catch (error) {
       notify(error.code.split("/")[1], "error");
     }
@@ -49,6 +51,7 @@ const AuthContextsProvider = ({ children }) => {
   async function logout() {
     try {
       await signOut(auth);
+      localStorage.setItem("is", "no");
     } catch (e) {
       notify(e.code.split("/")[1], "error");
     }
@@ -62,7 +65,8 @@ const AuthContextsProvider = ({ children }) => {
   }
 
   return (
-    <authContext.Provider value={{ register, user, logout, login, isAdmin }}>
+    <authContext.Provider
+      value={{ register, user, logout, login, isAdmin, loading }}>
       {children}
     </authContext.Provider>
   );

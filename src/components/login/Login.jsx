@@ -1,17 +1,23 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate } from "react-router-dom";
 import styles from "./style.module.css";
 import "../register/Register";
-
+import { useEffect } from "react";
+import { useAuth } from "../../contexts/auth/AuthContextProvider";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isUsernameFocused, setIsUsernameFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+  const [authLoaded, setAuthLoaded] = useState(false);
 
-  const handleLogin = () => {
-    console.log("Вход выполнен:", { username, password });
+  const { login, user } = useAuth();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    login(data.get("email"), data.get("password"));
   };
 
   return (
@@ -21,48 +27,21 @@ const Login = () => {
           <h2 style={{ fontSize: "1.5rem" }}>Instagram</h2>
         </div>
         <div className={styles.loginForm}>
-          <div className={styles.inputContainer}>
+          <div className={styles.inputContainer}></div>
+          <form className={styles.inputContainer} onSubmit={handleSubmit}>
             <input
               type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              onFocus={() => setIsUsernameFocused(true)}
-              onBlur={() => setIsUsernameFocused(false)}
-              className={`${styles.input} ${
-                isUsernameFocused || username ? styles.inputFocused : ""
-              }`}
+              className={styles.input}
+              placeholder="email"
+              name="email"
             />
-            <label className={styles.label}>Электронный адрес</label>
-          </div>
-          <form className={styles.inputContainer}>
             <input
-              type={showPassword ? "text" : "password"}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              onFocus={() => setIsPasswordFocused(true)}
-              onBlur={() => setIsPasswordFocused(false)}
-              className={`${styles.input} ${
-                isPasswordFocused || password ? styles.inputFocused : ""
-              }`}
-
-
-
+              className={styles.input}
+              type="text"
+              placeholder="password"
+              name="password"
             />
-            <label className={styles.label}>Пароль</label>
-            <p style={{ height: "20px" }}></p>
-
-
-
-
-            {password && (
-              <span
-                className={styles.showPassword}
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? "Скрыть" : "Показать"}
-              </span>
-            )}
-            <button onClick={handleLogin} className={styles.button}>
+            <button type="submit" className={styles.button}>
               Войти
             </button>
           </form>
@@ -78,8 +57,7 @@ const Login = () => {
             <a
               href="https://www.facebook.com/"
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
               Официальный сайт
             </a>
           </span>
