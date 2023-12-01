@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./style.module.css";
 import logo from "./images/logo.jpeg";
 import { GoHomeFill } from "react-icons/go";
@@ -11,8 +11,10 @@ import { FaPlus } from "react-icons/fa";
 import { VscAccount } from "react-icons/vsc";
 import { CgDetailsMore } from "react-icons/cg";
 import { FaThreads } from "react-icons/fa6";
+import Dropdown from "./dropdown/Dropdown";
 
 const Left_part = () => {
+  const [clicked, setClicked] = useState("none");
   return (
     <div className={styles.main}>
       <img src={logo} alt="logo" className={styles.logo} />
@@ -27,15 +29,15 @@ const Left_part = () => {
         </li>
         <li className={styles.li}>
           <ImCompass2 />
-       <span>Интересное</span>
+          <span>Интересное</span>
         </li>
         <li className={styles.li}>
           <MdVideoCameraFront />
           <span>Reels</span>
         </li>
-      <li className={styles.li}>
+        <li className={styles.li}>
           <FaFacebookMessenger />
-       <span>Собщения</span>
+          <span>Собщения</span>
         </li>
         <li className={styles.li}>
           <MdFavoriteBorder />
@@ -49,15 +51,24 @@ const Left_part = () => {
           <VscAccount />
           <span>Профиль</span>
         </li>
-        <li className={styles.li_threades}  >
+        <li className={styles.li_threades}>
           <FaThreads />
           <span>Threades</span>
         </li>
-        <li className={styles.li_threades}>
+        <li
+          className={styles.li_threades}
+          onClick={(e) => {
+            if (clicked == "none") {
+              setClicked("block");
+              return;
+            }
+            setClicked("none");
+          }}>
           <CgDetailsMore />
-        <span>Ещё</span>
-      </li>
+          <span>Ещё</span>
+        </li>
       </ul>
+      <Dropdown state={clicked} />
     </div>
   );
 };

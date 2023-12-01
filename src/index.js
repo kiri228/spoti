@@ -5,13 +5,16 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import Toastify from "./components/Toastify";
 import AuthContextsProvider from "./contexts/auth/AuthContextProvider";
+import CreatePostContext from "./contexts/CreatePostContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <AuthContextsProvider>
-      <App />
-      <Toastify />
+      <CreatePostContext>
+        <App />
+        <Toastify />
+      </CreatePostContext>
     </AuthContextsProvider>
   </BrowserRouter>
 );

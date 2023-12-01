@@ -1,6 +1,7 @@
 .main {
   width: 20%;
   height: 42rem;
+  position: relative;
 }
 
 .logo {
@@ -28,35 +29,33 @@
   position: relative;
   transition: 0.5s ease;
 }
-.li_threades{
+.li_threades {
   list-style: none;
-    display: flex;
-    align-items: center;
-    font-family: sans-serif;
-    font-size: 1rem;
-    border-radius: 5%;
-    height: 2rem;
-    position: relative;
-    transition: 0.5s ease;
-    padding-top: 20px;
-   
-  
+  display: flex;
+  align-items: center;
+  font-family: sans-serif;
+  font-size: 1rem;
+  border-radius: 5%;
+  height: 2rem;
+  position: relative;
+  transition: 0.5s ease;
+  padding-top: 20px;
 }
-.li_threades span{
+.li_threades span {
   margin-left: 17%;
-    font-size: 17px;
+  font-size: 17px;
 }
-.li_threades img{
+.li_threades img {
   width: 17%;
-    position: absolute;
+  position: absolute;
 }
-.li_threades:hover{
+.li_threades:hover {
   background-color: #a9a9a9;
-    opacity: 0.6;
+  opacity: 0.6;
 }
 .li span {
   margin-left: 17%;
-  font-size:17px;
+  font-size: 17px;
 }
 
 .li img {
@@ -68,4 +67,3 @@
   background-color: #a9a9a9;
   opacity: 0.6;
 }
-
