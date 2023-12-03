@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import {
+  getAuth,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -8,6 +9,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../../firebase";
 import { notify } from "../../components/Toastify";
+import axios from "axios";
 const ADMINS = ["admin@gmail.com"];
 export const authContext = createContext();
 
@@ -20,22 +22,49 @@ export function useAuth() {
 }
 
 const AuthContextsProvider = ({ children }) => {
+  const Apiusers = "http://localhost:8000/users_extra_info";
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(null);
-  async function register(email, password, displayName, name_and_surname) {
+  const [oneUser, setOneUser] = useState({});
+  async function register(email, password, displayName) {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      await updateProfile(auth.currentUser, { displayName, name_and_surname });
-      localStorage.setItem("is", "yes");
+      await axios.post(Apiusers, {
+        phoneNumber: "",
+        photoUrl: "",
+        description: "",
+        name: "",
+        gender: "",
+        id: auth.currentUser.uid,
+      });
     } catch (error) {
       notify(error.code.split("/")[1], "error");
     }
+  }
+  async function updateUserProfile(
+    description,
+    image,
+    name,
+    phoneNumber,
+    gender
+  ) {
+    await axios.put(Apiusers + "/" + auth.currentUser.uid, {
+      phoneNumber: phoneNumber,
+      photoUrl: image,
+      description: description,
+      name: name,
+      gender: gender,
+    });
+  }
+
+  async function getOneUser() {
+    let res = await axios.get(Apiusers + "/" + auth.currentUser.uid);
+    setOneUser(res.data);
   }
 
   async function login(email, password) {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      localStorage.setItem("is", "yes");
     } catch (error) {
       notify(error.code.split("/")[1], "error");
     }
@@ -45,13 +74,13 @@ const AuthContextsProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
+
     return () => unsubscribe();
   }, []);
 
   async function logout() {
     try {
       await signOut(auth);
-      localStorage.setItem("is", "no");
     } catch (e) {
       notify(e.code.split("/")[1], "error");
     }
@@ -66,7 +95,17 @@ const AuthContextsProvider = ({ children }) => {
 
   return (
     <authContext.Provider
-      value={{ register, user, logout, login, isAdmin, loading }}>
+      value={{
+        register,
+        user,
+        logout,
+        login,
+        isAdmin,
+        loading,
+        updateUserProfile,
+        getOneUser,
+        oneUser,
+      }}>
       {children}
     </authContext.Provider>
   );

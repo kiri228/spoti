@@ -8,14 +8,8 @@ const Register = () => {
   const { register, user } = useAuth();
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const data = new FormData(e.currentTarget);
-    register(
-      data.get("email"),
-      data.get("password"),
-      data.get("displayName"),
-      data.get("name_and_surname")
-    );
+    register(data.get("email"), data.get("password"), data.get("displayName"));
   };
   if (user) {
     return <Navigate to="/" />;
@@ -23,9 +17,6 @@ const Register = () => {
   return (
     <div className={styles.registerForm}>
       <h1 className={styles.instagramTitle}>Register</h1>
-      {/* <p className={styles.registrationText}>
-        Зарегистрируйтесь, чтобы смотреть фото и видео ваших друзей.
-      </p> */}
       <button
         className={styles.facebookButton}
         onClick={() => (window.location.href = "https://www.facebook.com/")}>
@@ -39,14 +30,9 @@ const Register = () => {
       </div>
 
       <form className={styles.inputContainer} onSubmit={handleSubmit}>
-        <input type="email" placeholder="Электронный адрес" name="email" />
-        <input
-          type="text"
-          placeholder="Имя и фамилия"
-          name="name_and_surname"
-        />
-        <input type="text" placeholder="Имя пользователя" name="displayName" />
-        <input type="password" placeholder="Пароль" name="password" />
+        <input type="email" placeholder="email" name="email" />
+        <input type="text" placeholder="username" name="displayName" />
+        <input type="password" placeholder="password" name="password" />
         <button className={styles.registerButton}>Регистрация</button>
       </form>
       <p className={styles.additionalText}>

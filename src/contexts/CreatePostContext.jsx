@@ -1,15 +1,54 @@
-import React, { createContext, useContext, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useReducer,
+  useEffect,
+} from "react";
 import { getDatabase, ref, set, onValue } from "firebase/database";
+import axios from "axios";
 
 export const postContext = createContext();
 const CreatePostContext = ({ children }) => {
-  const [id, setId] = useState(1);
+  const [posts, setPosts] = useState([]);
+  const [post, setPost] = useState({});
+  const API = "http://localhost:8000/posts";
+  useEffect(() => {
+    getPosts();
+  }, []);
   async function createPost(obj) {
-    const db = getDatabase();
-    set(ref(db, "posts/" + id), {});
+    await axios.post(API, obj);
+    getPosts();
   }
-
-  return <postContext.Provider>{children}</postContext.Provider>;
+  async function deletePost(id) {
+    await axios.delete(API + id);
+    getPosts();
+  }
+  async function updatePost(obj, id) {
+    await axios.put(API + id, obj);
+  }
+  async function getPost(id) {
+    let res = axios.get(API + id);
+    setPost(res.data);
+  }
+  async function getPosts() {
+    let res = await axios.get(API);
+    setPosts(res.data);
+  }
+  return (
+    <postContext.Provider
+      value={{
+        createPost,
+        post,
+        posts,
+        deletePost,
+        getPost,
+        getPost,
+        updatePost,
+      }}>
+      {children}
+    </postContext.Provider>
+  );
 };
 
 export default CreatePostContext;
