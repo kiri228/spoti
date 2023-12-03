@@ -7,7 +7,7 @@
   margin: 0rem auto;
   padding-top: 3rem;
 }
-input[type="text"],
+.main input[type="text"],
 .select {
   width: 100%;
   padding: 12px 20px;

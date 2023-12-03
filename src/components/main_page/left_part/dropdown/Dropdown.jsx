@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./style.module.css";
 import { useAuth } from "../../../../contexts/auth/AuthContextProvider";
+import { getAuth } from "firebase/auth";
 const Dropdown = ({ state }) => {
-  console.log(state);
   const { logout } = useAuth();
+  const auth = getAuth();
+  const { updateUserProfile, getOneUser } = useAuth();
   return (
     <div className={styles.main} style={{ display: `${state}` }}>
       <div className={styles.settings}>

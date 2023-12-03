@@ -1,11 +1,16 @@
 import React, { useContext } from "react";
 import styles from "./style.module.css";
-import { Country, State, City } from "country-state-city";
-import { useAuth } from "../../contexts/auth/AuthContextProvider";
+import { Country } from "country-state-city";
 import { useNavigate } from "react-router-dom";
+import { postContext } from "../../contexts/CreatePostContext";
+import { getAuth } from "firebase/auth";
 const CreatePage = () => {
   const navigate = useNavigate();
+  const { createPost } = useContext(postContext);
+
   const handleSubmit = (e) => {
+    const auth = getAuth();
+
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const obj = {
@@ -13,7 +18,10 @@ const CreatePage = () => {
       description: data.get("description"),
       location: data.get("region"),
       show_comments: data.get("showComments") ? true : false,
+      user: auth.currentUser.uid,
     };
+    createPost(obj);
+    navigate("/");
   };
   return (
     <div className={styles.main}>
@@ -37,7 +45,7 @@ const CreatePage = () => {
 
         <select className={styles.select} id="region" name="region">
           {Country.getAllCountries().map((item) => (
-            <option> {item.name} </option>
+            <option key={item.isoCode}> {item.name} </option>
           ))}
         </select>
         <label className={styles.label_ch}>Комментарии</label>

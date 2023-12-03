@@ -47,7 +47,11 @@ const Left_part = () => {
         <li className={styles.li}>
           <FaPlus />
           <span>
-            <NavLink to="/create">Создатб</NavLink>ь
+            <NavLink
+              to="/create"
+              style={{ textDecoration: "none", color: "black" }}>
+              Создать
+            </NavLink>
           </span>
         </li>
         <li className={styles.li}>

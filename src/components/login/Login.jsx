@@ -12,7 +12,7 @@ const Login = () => {
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [authLoaded, setAuthLoaded] = useState(false);
 
-  const { login, user } = useAuth();
+  const { login } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
