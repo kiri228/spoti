@@ -8,6 +8,7 @@ import { MdVideoCameraFront } from "react-icons/md";
 import { FaFacebookMessenger } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 import { VscAccount } from "react-icons/vsc";
 import { CgDetailsMore } from "react-icons/cg";
 import { FaThreads } from "react-icons/fa6";
@@ -45,7 +46,9 @@ const Left_part = () => {
         </li>
         <li className={styles.li}>
           <FaPlus />
-          <span>Создать</span>
+          <span>
+            <NavLink to="/create">Создатб</NavLink>ь
+          </span>
         </li>
         <li className={styles.li}>
           <VscAccount />
