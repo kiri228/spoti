@@ -33,14 +33,15 @@ const JsonServerUserContext = ({ children }) => {
     setOneUser(res.data);
   }
   async function getUsers() {
-    let res = axios.get(Apiusers);
-    setUsers(res);
+    let res = await axios.get(Apiusers);
+    setUsers(res.data);
   }
   return (
     <jsonUserContext.Provider
       value={{
         oneUser,
         users,
+        getUsers,
         updateUserProfile,
         getOneUser,
       }}>
