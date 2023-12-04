@@ -9,6 +9,7 @@ import { getDatabase, ref, set, onValue } from "firebase/database";
 import axios from "axios";
 
 export const postContext = createContext();
+
 const CreatePostContext = ({ children }) => {
   const [posts, setPosts] = useState([]);
   const [post, setPost] = useState({});
@@ -43,7 +44,7 @@ const CreatePostContext = ({ children }) => {
         posts,
         deletePost,
         getPost,
-        getPost,
+        getPosts,
         updatePost,
       }}>
       {children}

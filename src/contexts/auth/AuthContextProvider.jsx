@@ -25,14 +25,15 @@ const AuthContextsProvider = ({ children }) => {
   const Apiusers = "http://localhost:8000/users_extra_info";
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(null);
-  const [oneUser, setOneUser] = useState({});
   async function register(email, password, displayName) {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       await axios.post(Apiusers, {
         phoneNumber: "",
+        email: email,
         photoUrl: "",
         description: "",
+        username: displayName,
         name: "",
         gender: "",
         id: auth.currentUser.uid,
@@ -40,26 +41,6 @@ const AuthContextsProvider = ({ children }) => {
     } catch (error) {
       notify(error.code.split("/")[1], "error");
     }
-  }
-  async function updateUserProfile(
-    description,
-    image,
-    name,
-    phoneNumber,
-    gender
-  ) {
-    await axios.put(Apiusers + "/" + auth.currentUser.uid, {
-      phoneNumber: phoneNumber,
-      photoUrl: image,
-      description: description,
-      name: name,
-      gender: gender,
-    });
-  }
-
-  async function getOneUser() {
-    let res = await axios.get(Apiusers + "/" + auth.currentUser.uid);
-    setOneUser(res.data);
   }
 
   async function login(email, password) {
@@ -102,9 +83,6 @@ const AuthContextsProvider = ({ children }) => {
         login,
         isAdmin,
         loading,
-        updateUserProfile,
-        getOneUser,
-        oneUser,
       }}>
       {children}
     </authContext.Provider>

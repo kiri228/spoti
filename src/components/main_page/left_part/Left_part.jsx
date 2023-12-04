@@ -29,22 +29,6 @@ const Left_part = () => {
           <span>Поиск</span>
         </li>
         <li className={styles.li}>
-          <ImCompass2 />
-          <span>Интересное</span>
-        </li>
-        <li className={styles.li}>
-          <MdVideoCameraFront />
-          <span>Reels</span>
-        </li>
-        <li className={styles.li}>
-          <FaFacebookMessenger />
-          <span>Собщения</span>
-        </li>
-        <li className={styles.li}>
-          <MdFavoriteBorder />
-          <span>Уведомления</span>
-        </li>
-        <li className={styles.li}>
           <FaPlus />
           <span>
             <NavLink
@@ -58,12 +42,8 @@ const Left_part = () => {
           <VscAccount />
           <span>Профиль</span>
         </li>
-        <li className={styles.li_threades}>
-          <FaThreads />
-          <span>Threades</span>
-        </li>
         <li
-          className={styles.li_threades}
+          className={styles.li}
           onClick={(e) => {
             if (clicked == "none") {
               setClicked("block");
