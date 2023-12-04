@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import styles from "./style.module.css";
-import Navbar from "./navbar/Navbar";
 import Card from "./card/Card";
+import { postContext } from "../../../contexts/CreatePostContext";
 
 const Center = () => {
+  const { getPosts, posts } = useContext(postContext);
+  useEffect(() => {
+    getPosts();
+  }, []);
   return (
     <div className={styles.main}>
-      <Navbar />
-      <Card /> 
+      {/* {posts.map((item) => (
+        <Card
+          user={item.user}
+          image={item.image}
+          location={item.location}
+          likes={item.likes}
+          comments={item.comments}
+        /> ))}*/}
+      <Card />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 .main {
   width: 20%;
-  height: 42rem;
-  position: relative;
+  height: 10rem;
+  position: fixed;
 }
 
 .logo {
@@ -14,7 +14,7 @@
   display: flex;
   width: 90%;
   flex-direction: column;
-  gap: 4rem;
+  gap: 2rem;
   margin-left: -5%;
 }
 
@@ -28,6 +28,7 @@
   height: 2rem;
   position: relative;
   transition: 0.5s ease;
+  margin-left: 2rem;
 }
 .li_threades {
   list-style: none;
