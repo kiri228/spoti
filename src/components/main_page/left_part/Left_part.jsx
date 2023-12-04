@@ -40,7 +40,13 @@ const Left_part = () => {
         </li>
         <li className={styles.li}>
           <VscAccount />
-          <span>Профиль</span>
+          <span>
+            <NavLink
+              to="/profile"
+              style={{ textDecoration: "none", color: "black" }}>
+              Профиль
+            </NavLink>
+          </span>
         </li>
         <li
           className={styles.li}

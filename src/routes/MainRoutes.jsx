@@ -6,6 +6,7 @@ import Register from "../components/register/Register";
 import { useAuth } from "../contexts/auth/AuthContextProvider";
 import AdminProtectedRoutes from "./AdminProtectedRoutes";
 import CreatePage from "../components/createPage/CreatePage";
+import Profile from "../components/profile/Profile";
 const MainRoutes = () => {
   const { user } = useAuth();
 
@@ -15,6 +16,7 @@ const MainRoutes = () => {
       <Route path="/login" element={user ? <Mainpage /> : <Login />} />
       <Route path="/register" element={user ? <Mainpage /> : <Register />} />
       <Route path="/create" element={<CreatePage />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 };
