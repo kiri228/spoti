@@ -1,2 +1,13 @@
 .main {
+  border-left: 1px solid black;
+  position: relative;
+}
+.postsOrSaved {
+  margin-left: 29%;
+}
+.switchButtons {
+  margin-left: 35%;
+  padding-bottom: 1rem;
+  display: flex;
+  gap: 2rem;
 }

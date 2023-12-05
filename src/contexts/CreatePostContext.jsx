@@ -5,7 +5,6 @@ import React, {
   useReducer,
   useEffect,
 } from "react";
-import { getDatabase, ref, set, onValue } from "firebase/database";
 import axios from "axios";
 
 export const postContext = createContext();

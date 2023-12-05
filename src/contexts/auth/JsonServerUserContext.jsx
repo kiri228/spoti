@@ -9,27 +9,24 @@ const JsonServerUserContext = ({ children }) => {
   const Apiusers = "http://localhost:8000/users_extra_info";
   const [oneUser, setOneUser] = useState({});
   const [users, setUsers] = useState([]);
-  async function updateUserProfile(
-    description,
-    image,
-    name,
-    phoneNumber,
-    gender
-  ) {
-    console.log(auth.currentUser.uid);
+  async function updateUserProfile(obj) {
+    const { description, image, email, name, phoneNumber, gender } = obj;
     await axios.patch(Apiusers + "/" + auth.currentUser.uid, {
-      phoneNumber: phoneNumber,
-      photoUrl: image,
-      description: description,
-      name: name,
-      gender: gender,
+      phoneNumber: phoneNumber ? phoneNumber : "",
+      photoUrl: image ? image : "",
+      description: description ? description : "",
+      name: name ? name : "",
+      gender: gender ? gender : "",
     });
   }
   useEffect(() => {
     getUsers();
   }, []);
-  async function getOneUser() {
-    let res = await axios.get(Apiusers + "/" + auth.currentUser.uid);
+  async function getOneUser(id) {
+    if (!id) {
+      return;
+    }
+    let res = await axios.get(Apiusers + "/" + id);
     setOneUser(res.data);
   }
   async function getUsers() {
