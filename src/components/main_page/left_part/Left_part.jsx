@@ -22,7 +22,11 @@ const Left_part = () => {
       <ul className={styles.ul}>
         <li className={styles.li}>
           <GoHomeFill />
-          <span>Главная</span>
+          <span>
+            <NavLink to="/" style={{ textDecoration: "none", color: "black" }}>
+              Главная
+            </NavLink>
+          </span>
         </li>
         <li className={styles.li}>
           <IoSearchOutline />

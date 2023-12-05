@@ -7,6 +7,7 @@ import { useAuth } from "../contexts/auth/AuthContextProvider";
 import AdminProtectedRoutes from "./AdminProtectedRoutes";
 import CreatePage from "../components/createPage/CreatePage";
 import Profile from "../components/profile/Profile";
+import EditProfile from "../components/profile/editProfile/EditProfile";
 const MainRoutes = () => {
   const { user } = useAuth();
 
@@ -17,6 +18,7 @@ const MainRoutes = () => {
       <Route path="/register" element={user ? <Mainpage /> : <Register />} />
       <Route path="/create" element={<CreatePage />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/profile/edit" element={<EditProfile />} />
     </Routes>
   );
 };
