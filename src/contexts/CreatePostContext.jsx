@@ -21,14 +21,15 @@ const CreatePostContext = ({ children }) => {
     getPosts();
   }
   async function deletePost(id) {
-    await axios.delete(API + id);
+    await axios.delete(API + "/" + id);
     getPosts();
   }
   async function updatePost(obj, id) {
-    await axios.put(API + id, obj);
+    await axios.patch(API + "/" + id, obj);
+    getPosts();
   }
   async function getPost(id) {
-    let res = axios.get(API + id);
+    let res = await axios.get(API + "/" + id);
     setPost(res.data);
   }
   async function getPosts() {

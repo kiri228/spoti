@@ -50,6 +50,7 @@
   width: 100%;
   height: 40px;
   display: flex;
+  position: relative;
 }
 .like {
   font-size: 35px;
@@ -58,10 +59,15 @@
   cursor: pointer;
   padding: 5px;
 }
-
+.numOfLikes {
+  position: absolute;
+  top: 95%;
+  left: 3%;
+  font-size: 1rem;
+  color: black;
+}
 .like:hover {
   opacity: 0.9;
-  color: red;
 }
 .coment {
   font-size: 30px;
@@ -69,6 +75,12 @@
   color: black;
   cursor: pointer;
   padding: 5px;
+}
+.numOfComments {
+  position: absolute;
+  top: 95%;
+  left: 12%;
+  font-size: 1rem;
 }
 .coment:hover {
   opacity: 0.6;

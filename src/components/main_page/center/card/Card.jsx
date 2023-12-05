@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./style.module.css";
 import { MdFavorite } from "react-icons/md";
 import { FaRegComment } from "react-icons/fa6";
@@ -6,15 +6,40 @@ import { LuSend } from "react-icons/lu";
 import { BsBookmark } from "react-icons/bs";
 import { getAuth } from "firebase/auth";
 import { jsonUserContext } from "../../../../contexts/auth/JsonServerUserContext";
-const Card = ({ user, location, image, likes, comments }) => {
+import { postContext } from "../../../../contexts/CreatePostContext";
+const Card = ({
+  user,
+  location,
+  image,
+  likes,
+  comments,
+  showComments,
+  keyid,
+}) => {
   const auth = getAuth();
   const { getUsers, users, getOneUser, oneUser } = useContext(jsonUserContext);
+  const { getPosts, posts, updatePost } = useContext(postContext);
   useEffect(() => {
     getUsers();
+    getOneUser(auth.currentUser.uid);
+    getPosts();
   }, []);
+  const [iconColor, setIconColor] = useState("");
+  const post = posts.find((item) => item.id == keyid);
+  const handleIconClick = (e) => {
+    if (iconColor === "") {
+      setIconColor("red");
+      post.likes.push(oneUser);
+      updatePost(post, keyid);
+    } else {
+      setIconColor("");
+      post.likes = post.likes.filter((item) => item.id !== oneUser.id);
+      updatePost(post, keyid);
+    }
+  };
   const arr = users.find((item) => item.id == user);
   return (
-    <div className={styles.main} key={user}>
+    <div className={styles.main}>
       <div className={styles.card}>
         <div className={styles.header}>
           <div className={styles.userlogo}>
@@ -32,31 +57,20 @@ const Card = ({ user, location, image, likes, comments }) => {
         <div className={styles.communication}>
           <div className={styles.like}>
             {" "}
-            <MdFavorite />{" "}
-            <p
-              style={{
-                fontSize: "1rem",
-                position: "absolute",
-                left: "22%",
-                top: "121%",
-                color: "black",
-              }}>
-              {likes}
-            </p>
+            <MdFavorite
+              onClick={handleIconClick}
+              id={keyid}
+              style={{ color: iconColor }}
+            />{" "}
+            <p className={`${styles.numOfLikes}`}>{post.likes.length}</p>
           </div>
-          <div className={styles.coment}>
-            {" "}
-            <FaRegComment />
-            <p
-              style={{
-                fontSize: "1rem",
-                position: "absolute",
-                left: "26%",
-                top: "121%",
-              }}>
-              {comments}
-            </p>
-          </div>
+          {showComments ? (
+            <div className={styles.coment}>
+              {" "}
+              <FaRegComment />
+              <p className={styles.numOfComments}>{post.comments.length}</p>
+            </div>
+          ) : null}
           <div className={styles.sending}>
             <LuSend />
           </div>

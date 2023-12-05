@@ -40,6 +40,9 @@ const AuthContextsProvider = ({ children }) => {
         username: displayName,
         name: "",
         gender: "",
+        followers: [],
+        followed: [],
+        saved_posts: [],
         id: auth.currentUser.uid,
       });
     } catch (error) {
