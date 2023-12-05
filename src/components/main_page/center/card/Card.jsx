@@ -7,29 +7,30 @@ import { BsBookmark } from "react-icons/bs";
 import { getAuth } from "firebase/auth";
 import { jsonUserContext } from "../../../../contexts/auth/JsonServerUserContext";
 import { postContext } from "../../../../contexts/CreatePostContext";
-const Card = ({
-  user,
-  location,
-  image,
-  likes,
-  comments,
-  showComments,
-  keyid,
-}) => {
+const Card = ({ user, location, image, showComments, keyid }) => {
   const auth = getAuth();
-  const { getUsers, users, getOneUser, oneUser } = useContext(jsonUserContext);
-  const { getPosts, posts, updatePost } = useContext(postContext);
+  const { getUsers, users, getOneUser, oneUser, defaultAvatar } =
+    useContext(jsonUserContext);
+  const { getPosts, posts, updatePost, isLiked } = useContext(postContext);
+  const [iconColor, setIconColor] = useState("");
   useEffect(() => {
     getUsers();
     getOneUser(auth.currentUser.uid);
     getPosts();
+    if (isLiked(keyid, auth.currentUser.uid)) {
+      setIconColor("red");
+    }
   }, []);
-  const [iconColor, setIconColor] = useState("");
+
   const post = posts.find((item) => item.id == keyid);
   const handleIconClick = (e) => {
     if (iconColor === "") {
       setIconColor("red");
-      post.likes.push(oneUser);
+      post.likes.push({
+        photoUrl: oneUser.photoUrl,
+        username: oneUser.username,
+        id: oneUser.id,
+      });
       updatePost(post, keyid);
     } else {
       setIconColor("");
@@ -38,13 +39,16 @@ const Card = ({
     }
   };
   const arr = users.find((item) => item.id == user);
+
   return (
     <div className={styles.main}>
       <div className={styles.card}>
         <div className={styles.header}>
-          <div className={styles.userlogo}>
-            <img src={arr.image} />
-          </div>
+          <img
+            src={arr.photoUrl}
+            className={styles.avatar}
+            onError={defaultAvatar}
+          />
           <div className={styles.userDate}>
             <div className={styles.userName}>{arr.username}</div>
             <div className={styles.userPosition}>{location}</div>
