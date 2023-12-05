@@ -10,7 +10,6 @@ const CreatePage = () => {
 
   const handleSubmit = (e) => {
     const auth = getAuth();
-
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const obj = {
@@ -18,6 +17,8 @@ const CreatePage = () => {
       description: data.get("description"),
       location: data.get("region"),
       show_comments: data.get("showComments") ? true : false,
+      likes: [],
+      comments: [],
       user: auth.currentUser.uid,
     };
     createPost(obj);

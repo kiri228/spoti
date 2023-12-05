@@ -8,16 +8,17 @@ const Center = () => {
   useEffect(() => {
     getPosts();
   }, []);
-
   return (
     <div className={styles.main}>
       {posts.map((item) => (
         <Card
+          keyid={item.id}
           user={item.user}
           image={item.image}
           location={item.location}
           likes={item.likes}
           comments={item.comments}
+          showComments={item.show_comments}
         />
       ))}
     </div>
