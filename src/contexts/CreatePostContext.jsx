@@ -32,6 +32,13 @@ const CreatePostContext = ({ children }) => {
     let res = await axios.get(API + "/" + id);
     setPost(res.data);
   }
+  function isLiked(postId, user) {
+    let post = posts.find((item) => item.id == postId);
+    if (post.likes.find((item) => item.id == user)) {
+      return true;
+    }
+    return false;
+  }
   async function getPosts() {
     let res = await axios.get(API);
     setPosts(res.data);
@@ -46,6 +53,7 @@ const CreatePostContext = ({ children }) => {
         getPost,
         getPosts,
         updatePost,
+        isLiked,
       }}>
       {children}
     </postContext.Provider>

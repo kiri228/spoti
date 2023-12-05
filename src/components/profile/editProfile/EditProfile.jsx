@@ -88,16 +88,7 @@ const EditProfile = () => {
             name="description"
             placeholder="description..."
           />
-          <label className={styles.label} for="fname">
-            Email ({oneUser.email})
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="email"
-            onChange={handleInput}
-            placeholder="new@gmail.com"
-          />
+
           <label className={styles.label} for="fname">
             Номер телефона ({oneUser.phoneNumber})
           </label>

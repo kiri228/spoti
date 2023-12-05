@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import defaultImage from "../../images/default.jpeg";
 import {
   getAuth,
   updateEmail,
@@ -48,6 +49,9 @@ const JsonServerUserContext = ({ children }) => {
     let res = await axios.get(Apiusers);
     setUsers(res.data);
   }
+  function defaultAvatar(e) {
+    e.target.src = `${defaultImage}`;
+  }
   return (
     <jsonUserContext.Provider
       value={{
@@ -56,6 +60,7 @@ const JsonServerUserContext = ({ children }) => {
         getUsers,
         updateUserProfile,
         getOneUser,
+        defaultAvatar,
       }}>
       {children}
     </jsonUserContext.Provider>
