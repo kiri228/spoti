@@ -1,24 +1,39 @@
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
-import { getAuth } from "firebase/auth";
+import {
+  getAuth,
+  updateEmail,
+  EmailAuthProvider,
+  reauthenticateWithCredential,
+} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 export const jsonUserContext = createContext();
 
 const JsonServerUserContext = ({ children }) => {
   const auth = getAuth();
-
+  const navigate = useNavigate();
   const Apiusers = "http://localhost:8000/users_extra_info";
   const [oneUser, setOneUser] = useState({});
   const [users, setUsers] = useState([]);
   async function updateUserProfile(obj) {
-    const { description, image, email, name, phoneNumber, gender } = obj;
-    await axios.patch(Apiusers + "/" + auth.currentUser.uid, {
+    getOneUser(auth.currentUser.uid);
+    const { description, image, username, name, phoneNumber, gender } = obj;
+    if (username.length < 3) {
+      alert("wrong data");
+      return;
+    }
+    alert("success edit");
+    axios.patch(Apiusers + "/" + auth.currentUser.uid, {
       phoneNumber: phoneNumber ? phoneNumber : "",
       photoUrl: image ? image : "",
       description: description ? description : "",
       name: name ? name : "",
       gender: gender ? gender : "",
+      username: username,
     });
+    navigate("/profile");
   }
+
   useEffect(() => {
     getUsers();
   }, []);

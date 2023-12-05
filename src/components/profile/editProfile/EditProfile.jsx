@@ -8,22 +8,32 @@ import { jsonUserContext } from "../../../contexts/auth/JsonServerUserContext";
 const EditProfile = () => {
   const { getOneUser, oneUser, updateUserProfile } =
     useContext(jsonUserContext);
-  const [switchA, setSwitchA] = useState("edit");
-  const auth = getAuth();
   useEffect(() => {
     getOneUser(auth.currentUser.uid);
   }, []);
+  const [dict, setDict] = useState({
+    image: oneUser.photoUrl,
+    description: oneUser.description,
+    email: oneUser.email,
+    gender: oneUser.gender,
+    name: oneUser.name,
+    phoneNumber: oneUser.phoneNumber,
+    username: oneUser.username,
+  });
+
+  const auth = getAuth();
+
+  function handleInput(e) {
+    console.log(dict);
+    setDict({
+      ...dict,
+      [e.target.name]: e.target.value,
+    });
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    const obj = {
-      image: data.get("image"),
-
-      description: data.get("description"),
-      location: data.get("region"),
-      show_comments: data.get("showComments") ? true : false,
-      user: auth.currentUser.uid,
-    };
+    updateUserProfile(dict);
   };
   return (
     <div className={styles.main}>
@@ -35,61 +45,84 @@ const EditProfile = () => {
         </div>
         <form className={styles.form} onSubmit={handleSubmit}>
           <label className={styles.label} for="fname">
-            Изменить аватар
+            Изменить аватар ({oneUser.photoUrl.slice(0, 30)} ...)
           </label>
           <input
             type="text"
+            value={dict.image}
             id="fname"
             name="image"
-            placeholder="Image url..."
+            placeholder="url..."
+            onChange={handleInput}
           />
           <label className={styles.label} for="fname">
-            Username
+            Username ({oneUser.username})
           </label>
           <input
             type="text"
             id="name"
             name="username"
-            placeholder="Username..."
+            placeholder="username..."
+            onChange={handleInput}
           />
           <label className={styles.label} for="fname">
-            BIO(1-150)
+            Name ({oneUser.name})
           </label>
           <input
             type="text"
             id="name"
-            name="description"
-            placeholder="BIO..."
+            name="name"
+            placeholder="name..."
+            onChange={handleInput}
           />
           <label className={styles.label} for="fname">
-            Email (требуются доп действия)
+            BIO(1-150)
+          </label>
+          <label className={styles.label} for="fname">
+            ({oneUser.description})
+          </label>
+          <input
+            type="text"
+            id="name"
+            onChange={handleInput}
+            name="description"
+            placeholder="description..."
+          />
+          <label className={styles.label} for="fname">
+            Email ({oneUser.email})
           </label>
           <input
             type="text"
             id="name"
             name="email"
-            placeholder="new@gmail.com..."
+            onChange={handleInput}
+            placeholder="new@gmail.com"
           />
           <label className={styles.label} for="fname">
-            Номер телефона
+            Номер телефона ({oneUser.phoneNumber})
           </label>
           <input
             type="text"
             id="name"
+            onChange={handleInput}
             name="phoneNumber"
-            placeholder="Number..."
+            placeholder="4234234324..."
           />
           <label className={styles.label} for="fname">
             Gender
           </label>
-          <select className={styles.select} id="region" name="gender">
+          <select
+            className={styles.select}
+            id="region"
+            name="gender"
+            onChange={handleInput}>
             <option> prefer not to say </option>
             <option> male </option>
             <option> female </option>
             <option> another </option>
           </select>
           <button type="submit" value="Submit" className={styles.button}>
-            Register
+            Edit
           </button>
         </form>
       </div>
