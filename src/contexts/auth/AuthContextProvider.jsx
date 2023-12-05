@@ -6,10 +6,13 @@ import {
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
+  reauthenticateWithCredential,
 } from "firebase/auth";
+
 import { auth } from "../../firebase";
 import { notify } from "../../components/Toastify";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const ADMINS = ["admin@gmail.com"];
 export const authContext = createContext();
 
@@ -22,6 +25,7 @@ export function useAuth() {
 }
 
 const AuthContextsProvider = ({ children }) => {
+  const navigate = useNavigate();
   const Apiusers = "http://localhost:8000/users_extra_info";
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(null);
@@ -62,6 +66,7 @@ const AuthContextsProvider = ({ children }) => {
   async function logout() {
     try {
       await signOut(auth);
+      navigate("/login");
     } catch (e) {
       notify(e.code.split("/")[1], "error");
     }
