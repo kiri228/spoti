@@ -8,6 +8,7 @@ import AdminProtectedRoutes from "./AdminProtectedRoutes";
 import CreatePage from "../components/createPage/CreatePage";
 import Profile from "../components/profile/Profile";
 import EditProfile from "../components/profile/editProfile/EditProfile";
+import AlienProfile from "../components/AnotherUserProfile/AlienProfile";
 const MainRoutes = () => {
   const { user } = useAuth();
 
@@ -19,6 +20,7 @@ const MainRoutes = () => {
       <Route path="/create" element={<CreatePage />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/profile/edit" element={<EditProfile />} />
+      <Route path="/profile/:id" element={<AlienProfile />} />
     </Routes>
   );
 };
