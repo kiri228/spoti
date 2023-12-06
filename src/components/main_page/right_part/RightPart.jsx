@@ -1,16 +1,34 @@
-import React, { useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import styles from "./style.module.css";
 import TextField from "@mui/material/TextField";
 import { jsonUserContext } from "../../../contexts/auth/JsonServerUserContext";
 import { getAuth } from "firebase/auth";
 import { NavLink } from "react-router-dom";
+
 const RightPart = () => {
   const auth = getAuth();
   const { getUsers, users, defaultAvatar } = useContext(jsonUserContext);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredUsers, setFilteredUsers] = useState([]);
+
   useEffect(() => {
     getUsers();
   }, []);
-  const allUsers = users.filter((item) => item.id !== auth.currentUser.uid);
+
+  useEffect(() => {
+    const filtered = users.filter(
+      (item) =>
+        item.id !== auth.currentUser.uid &&
+        item.username.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    setFilteredUsers(filtered);
+  }, [searchQuery, users, auth.currentUser.uid]);
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
   return (
     <div className={styles.main}>
       <TextField
@@ -18,17 +36,26 @@ const RightPart = () => {
         variant="filled"
         className={styles.input}
         label="search..."
+        value={searchQuery}
+        onChange={handleSearchChange}
       />
       <ul className={styles.ul}>
-        {allUsers.map((item) => (
-          <NavLink to={`/profile/${item.id}`} className={styles.navlink}>
-            <li key={item.id} className={styles.li}>
+
+        {filteredUsers.map((item) => (
+          <NavLink
+            to={`/profile/${item.id}`}
+            className={styles.navlink}
+            key={item.id}
+          >
+            <li className={styles.li}>
+
               <img
                 src={item.photoUrl}
                 onError={defaultAvatar}
                 className={styles.avatar}
+                alt={`Avatar of ${item.username}`}
               />
-              <spna className={styles.username}>{item.username}</spna>
+              <span className={styles.username}>{item.username}</span>
             </li>
           </NavLink>
         ))}
