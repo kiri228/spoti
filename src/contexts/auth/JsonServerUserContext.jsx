@@ -34,7 +34,22 @@ const JsonServerUserContext = ({ children }) => {
     });
     navigate("/profile");
   }
-
+  async function updateUserFollowers(prevArr, obj, id) {
+    getOneUser(auth.currentUser.uid);
+    alert("success edit");
+    let final = prevArr;
+    final.push(obj);
+    axios.patch(Apiusers + "/" + id, {
+      followers: final,
+    });
+    navigate("/");
+  }
+  async function updateUserUnFollowers(array, deleteId, id) {
+    axios.patch(Apiusers + "/" + id, {
+      followers: array.filter((item) => item.id !== deleteId),
+    });
+    navigate("/");
+  }
   useEffect(() => {
     getUsers();
   }, []);
@@ -61,6 +76,8 @@ const JsonServerUserContext = ({ children }) => {
         updateUserProfile,
         getOneUser,
         defaultAvatar,
+        updateUserFollowers,
+        updateUserUnFollowers,
       }}>
       {children}
     </jsonUserContext.Provider>

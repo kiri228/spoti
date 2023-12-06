@@ -22,7 +22,7 @@ const RightPart = () => {
       <ul className={styles.ul}>
         {allUsers.map((item) => (
           <NavLink to={`/profile/${item.id}`} className={styles.navlink}>
-            <li key={item.id}>
+            <li key={item.id} className={styles.li}>
               <img
                 src={item.photoUrl}
                 onError={defaultAvatar}
