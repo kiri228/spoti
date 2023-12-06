@@ -15,6 +15,9 @@
   gap: 1rem;
   margin-top: 3rem;
 }
+.li {
+  position: relative;
+}
 .avatar {
   height: 2rem;
   width: 2rem;

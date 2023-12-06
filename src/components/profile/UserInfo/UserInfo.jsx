@@ -35,10 +35,10 @@ const UserInfo = ({ auth }) => {
             </Button>
           </NavLink>
         </div>
+        <p className={styles.bio}>{oneUser.description}</p>
         <div className={styles.extraInfo}>
           <span>{usersPosts.length} posts </span>
           <span>{followers} followers</span>
-          <span>{followed} followed</span>
         </div>
       </div>
     </div>

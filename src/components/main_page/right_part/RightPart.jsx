@@ -40,6 +40,7 @@ const RightPart = () => {
         onChange={handleSearchChange}
       />
       <ul className={styles.ul}>
+
         {filteredUsers.map((item) => (
           <NavLink
             to={`/profile/${item.id}`}
@@ -47,6 +48,7 @@ const RightPart = () => {
             key={item.id}
           >
             <li className={styles.li}>
+
               <img
                 src={item.photoUrl}
                 onError={defaultAvatar}

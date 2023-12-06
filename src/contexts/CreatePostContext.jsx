@@ -24,8 +24,12 @@ const CreatePostContext = ({ children }) => {
     await axios.delete(API + "/" + id);
     getPosts();
   }
-  async function updatePost(obj, id) {
-    await axios.patch(API + "/" + id, obj);
+  async function updatePost(id, obj, prevComments) {
+    const u = prevComments;
+    u.push(obj);
+    await axios.patch(API + "/" + id, {
+      comments: u,
+    });
     getPosts();
   }
   async function getPost(id) {
