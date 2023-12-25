@@ -13,7 +13,6 @@ export const jsonUserContext = createContext();
 const JsonServerUserContext = ({ children }) => {
   const auth = getAuth();
   const navigate = useNavigate();
-  const Apiusers = "http://localhost:8000/users_extra_info";
   const [oneUser, setOneUser] = useState({});
   const [users, setUsers] = useState([]);
   async function updateUserProfile(obj) {
@@ -24,30 +23,14 @@ const JsonServerUserContext = ({ children }) => {
       return;
     }
     alert("success edit");
-    axios.patch(Apiusers + "/" + auth.currentUser.uid, {
-      phoneNumber: phoneNumber ? phoneNumber : "",
-      photoUrl: image ? image : "",
-      description: description ? description : "",
-      name: name ? name : "",
-      gender: gender ? gender : "",
-      username: username,
-    });
-    navigate("/profile");
   }
   async function updateUserFollowers(prevArr, obj, id) {
     getOneUser(auth.currentUser.uid);
     alert("success edit");
     let final = prevArr;
     final.push(obj);
-    axios.patch(Apiusers + "/" + id, {
-      followers: final,
-    });
-    navigate("/");
   }
   async function updateUserUnFollowers(array, deleteId, id) {
-    axios.patch(Apiusers + "/" + id, {
-      followers: array.filter((item) => item.id !== deleteId),
-    });
     navigate("/");
   }
   useEffect(() => {
@@ -57,13 +40,8 @@ const JsonServerUserContext = ({ children }) => {
     if (!id) {
       return;
     }
-    let res = await axios.get(Apiusers + "/" + id);
-    setOneUser(res.data);
   }
-  async function getUsers() {
-    let res = await axios.get(Apiusers);
-    setUsers(res.data);
-  }
+  async function getUsers() {}
   function defaultAvatar(e) {
     e.target.src = `${defaultImage}`;
   }

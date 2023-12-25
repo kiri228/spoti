@@ -10,7 +10,7 @@ import {
 } from "firebase/auth";
 
 import { auth } from "../../firebase";
-import { notify } from "../../components/Toastify";
+
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const ADMINS = ["admin@gmail.com"];
@@ -26,27 +26,13 @@ export function useAuth() {
 
 const AuthContextsProvider = ({ children }) => {
   const navigate = useNavigate();
-  const Apiusers = "http://localhost:8000/users_extra_info";
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(null);
   async function register(email, password, displayName) {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      await axios.post(Apiusers, {
-        phoneNumber: "",
-        email: email,
-        photoUrl: "",
-        description: "",
-        username: displayName,
-        name: "",
-        gender: "",
-        followers: [],
-        followed: [],
-        saved_posts: [],
-        id: auth.currentUser.uid,
-      });
     } catch (error) {
-      notify(error.code.split("/")[1], "error");
+      alert(error);
     }
   }
 
@@ -54,7 +40,7 @@ const AuthContextsProvider = ({ children }) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
-      notify(error.code.split("/")[1], "error");
+      alert(error);
     }
   }
 
@@ -71,7 +57,7 @@ const AuthContextsProvider = ({ children }) => {
       await signOut(auth);
       navigate("/login");
     } catch (e) {
-      notify(e.code.split("/")[1], "error");
+      alert(e);
     }
   }
 

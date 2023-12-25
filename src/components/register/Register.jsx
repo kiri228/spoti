@@ -11,9 +11,6 @@ const Register = () => {
     const data = new FormData(e.currentTarget);
     register(data.get("email"), data.get("password"), data.get("displayName"));
   };
-  if (user) {
-    return <Navigate to="/" />;
-  }
   return (
     <div className={styles.registerForm}>
       <h1 className={styles.instagramTitle}>Register</h1>

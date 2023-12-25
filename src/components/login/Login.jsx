@@ -3,6 +3,7 @@ import { NavLink, Navigate } from "react-router-dom";
 import styles from "./style.module.css";
 import "../register/Register";
 import { useEffect } from "react";
+import { getAuth } from "firebase/auth";
 import { useAuth } from "../../contexts/auth/AuthContextProvider";
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -18,6 +19,7 @@ const Login = () => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     login(data.get("email"), data.get("password"));
+    console.log(getAuth());
   };
 
   return (
